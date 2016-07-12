@@ -1,0 +1,58 @@
+﻿{
+	"port": "80",
+	
+	"site-name": "GoldenSplit",
+	
+	"body-parser": {
+		"options": {
+			"extended": "false"
+		}
+	},
+	
+	"content-folder": "content",
+	
+	"cookie-parser": {
+	},
+	
+	"css-processor": {
+		"type": "stylus",
+		"folder": "public"
+	},
+	
+	"favicon": {
+		"folder":"public",
+		"file": "favicon.ico"
+	},
+	
+	"logger": {
+		"type": "morgan",
+		"options": "dev"
+	},
+	
+	"menu": {
+		"use-routes": "true"
+	},
+	
+	"routes": {
+		"module": "routes.js",
+		"options": "routes.json"
+	},
+	
+	"schedule-parser": {
+		"module": "schedule-parser.js",
+		"url": "https://gamesdonequick.com/schedule"
+	},
+	
+	"static": {
+		"folder": "public"
+	},
+	
+	"template-engine": {
+		"type": "pug",
+		"folder": "views"
+	},
+	
+	"use-static": {
+		"folder": "public"
+	}
+}

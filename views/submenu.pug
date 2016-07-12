@@ -1,0 +1,12 @@
+﻿extends layout
+
+block content
+	.panel
+		span= selectedMenuItemName
+	ul.submenu
+		- var submenu = content
+		- for ( var submenuItemName in submenu )
+				li.submenu-item
+					a( href = submenu[ submenuItemName ] )
+						include icons/section
+						span= submenuItemName

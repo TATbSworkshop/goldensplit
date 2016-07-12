@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	#control-panel.panel
+		span Марафон SGDQ2016
+		include icons/enlarge
+		include icons/shrink
+	iframe#twitch( src = "http://player.twitch.tv/?channel=goldensplit" )
+	iframe#twitch-chat(	src = "http://www.twitch.tv/goldensplit/chat?popout=" )

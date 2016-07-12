@@ -1,0 +1,41 @@
+extends layout
+
+block content
+	.panel
+		span Расписание SGDQ2016
+	p *Расписание указано в вашем локальном времени
+	p *Расписание может корректироваться каждый час в зависимости от хода мероприятия.
+	table#runTable.schedule
+		thead
+			tr.day-split
+				td#column1 Начало и продолжительность
+				td#column2 Игра и категория
+				td#column3 Комментаторы
+				td#column4 Скороходы
+				td#column5 Время приготовления
+				td#column6 Комментарии/Бонус
+		tbody
+			tr.day-split
+			- var table = content
+			- for( var id in table )
+				- var row = table[ id ]
+				tr
+					td.start-time.text-rigth= row[ 'start-time' ]
+					td= row.game
+					td( rowspan="2" )= row.commentators
+					td( rowspan="2" )= row.runners
+					td.setup.text-center( rowspan="2" )
+						if row[ 'setup-length' ] != ""
+							include icons/stopwatch
+						span= row[ 'setup-length' ]
+					td.text-center( rowspan="2" )= row.note
+				tr.second-row
+					td.text-right
+						if row.length != ""
+							include icons/stopwatch
+						span= row.length
+					td= row.category
+			tr.day-split( height = "25px" )
+				td( colspan = "20" )
+	script( type="text/javascript" src="javascripts/moment-with-locate.js" )
+	script( type="text/javascript" src="javascripts/time-correct.js" )

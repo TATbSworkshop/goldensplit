@@ -1,0 +1,66 @@
+﻿{
+	"main-page": "/news-ticker",
+	
+	"not-found-error-page": "/error404",
+	
+	"items": {
+		"/news-ticker": {
+			"menu-item-name": "Новости",
+			"title-suffix": "Новости",
+			"description-suffix": "Новости сообщества игровых скороходов",
+			"pug-pattern": "news-ticker"
+		},
+		
+		"/sgdq2016": {
+			"menu-item-name": "Марафон SGDQ2016",
+			"title-suffix": "SGDQ2016",
+			"description-suffix": "Официальная русская ретрансляция благотворительного марафона Summer Games Do Quick 2016",
+			"pug-pattern": "sgdq2016"
+		},
+		
+		"/schedule": {
+			"menu-item-name": "Расписание SGDQ2016",
+			"title-suffix": "Расписание SGDQ2016",
+			"description-suffix": "Расписание благотворительного марафона SGDQ2016",
+			"pug-pattern": "schedule-sgdq2016",
+			"use-parser": "getSchedule"
+		},
+		
+		"/knowledge-base": {
+			"menu-item-name": "База знаний",
+			"title-suffix": "База знаний",
+			"description-suffix": "База знаний по игровым забегам",
+			"pug-pattern": "submenu",
+			"subroutes": {
+			
+				"/dictionary": {
+					"submenu-item-name": "Словарь скорохода",
+					"title-suffix": "Словарь скорохода",
+					"description-suffix": "Словарь скорохода",
+					"pug-pattern": "dictionary",
+					"content-file": "dictionary"
+				},
+				
+				"/beginner-guide": {
+					"submenu-item-name": "Руководство начинающего скорохода",
+					"title-suffix": "Руководство начинающего скорохода",
+					"description-suffix": "Руководство начинающего скорохода",
+					"pug-pattern": "article",
+					"content-file": "beginners-guide"
+				}
+			}
+		},
+		
+		"/about": {
+			"menu-item-name": "О нас",
+			"title-suffix": "О нас",
+			"description-suffix": "О нас",
+			"pug-pattern": "about"
+		},
+		
+		"/error404": {
+			"title-suffix": "Страница не найдена",
+			"pug-pattern": "error404"
+		}
+	}
+}

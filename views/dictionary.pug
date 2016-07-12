@@ -1,0 +1,21 @@
+﻿extends layout
+
+block content
+	-var dictionary = content
+	.panel
+		span= dictionary.header
+	p *Нажмите на слово, чтобы показать его описание.
+	- for ( var sectionID in dictionary.sections)
+		- var section = dictionary.sections[ sectionID ]
+		h2= section.name
+		- for ( var wordID in section.words )
+			- var word = section.words[ wordID ]
+			details
+				summary.cap= word.name
+				p= word.description
+				- var flag = word.link == undefined
+				case flag
+					when false
+						a( href= word.link style = "margin-left:36px" ).
+							Ссылка
+	br

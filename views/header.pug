@@ -1,0 +1,13 @@
+﻿header#header
+	#header-content-wrap
+		include logo
+		br
+		br
+		br
+		hr
+		nav#nav-menu
+			ul
+				- for ( var id in menu )
+					li.menu-item
+						a( href = menu[ id ] )= id		
+		include icons/menu

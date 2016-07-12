@@ -1,0 +1,432 @@
+COLOR_BLACK = #000
+COLOR_DARK_GRAY = #121212
+COLOR_GRAY = #555
+COLOR_WHITE = #fff
+COLOR_WHITE_WITH_OPACITY = rgba( 255, 255, 255, 0.5 )
+COLOR_LIGHT_ORANGE = #fa0
+COLOR_INVISIBLE = rgba( 0, 0, 0, 0 )
+
+menuFonts = 'Cuprum', sans-serif
+textFonts = tahoma, arial, verdana, sans-serif, Lucida Sans
+
+BASIC_WIDTH = 1366px
+MOBILE_MAX_WIDTH = 768px
+
+HEADER_HEIGHT = 48px
+LOGO_HEIGHT = HEADER_HEIGHT - 2px
+SPACE_HEIGHT = 48px
+CONTENT_TOP = HEADER_HEIGHT + SPACE_HEIGHT
+FOOTER_HEIGHT = 48px
+
+DOCUMENT_HEIGHT_WITHOUT_CONTENT = HEADER_HEIGHT + 2 * SPACE_HEIGHT + FOOTER_HEIGHT
+
+CONTENT_MIN_HEIGHT = 768px - DOCUMENT_HEIGHT_WITHOUT_CONTENT
+
+MINIICON_SIZE = 16px
+ICON_SIZE = 32px
+WIDEICON_WIDTH = 60px
+
+FOOTER_PADDING = ( FOOTER_HEIGHT - ICON_SIZE ) / 2
+
+SCROOL_ELEMENT_WIDTH = 100px
+SCROOL_ELEMENT_PARAMETER = BASIC_WIDTH + 2 * SCROOL_ELEMENT_WIDTH
+SCROOL_ELEMENT_LEFT = - ( BASIC_WIDTH / 2 + SCROOL_ELEMENT_WIDTH )
+
+SHADOW_BLACK_BORDER =  0px 0px 0px 1px COLOR_BLACK
+SHADOW_WHITE_BORDER = 0px 0px 0px 1px COLOR_WHITE
+SHADOW_WINDOW_DARK = 0px 0px 32px 4px COLOR_BLACK
+SHADOW_MENU_TEXT = 1px 1px 2px #121212
+SHADOW_PANEL_TEXT = 1px 1px 2px COLOR_BLACK
+
+//-------------------------------------------------------------------------------
+body
+	background url( "/images/background-logo.svg" ), COLOR_GRAY
+	background-position 0px HEADER_HEIGHT + 6px
+	background-size 72px
+
+@media screen and ( max-width: MOBILE_MAX_WIDTH )
+	body
+		min-width 100vw
+		width 100vw	
+	
+// use for height of content and vk-widget:
+#support
+	display none
+	color COLOR_BLACK
+	background-color COLOR_LIGHT_ORANGE
+	height DOCUMENT_HEIGHT_WITHOUT_CONTENT
+	min-height CONTENT_TOP
+
+// scrool-element:
+#scroll-to-top-arrow
+	display none
+	position fixed
+	top 0
+	left 50%
+	z-index 10
+	width SCROOL_ELEMENT_WIDTH
+	height 100%
+	margin-left SCROOL_ELEMENT_LEFT
+	padding 16px 0 0 0
+	cursor pointer
+	text-align center
+	
+	span
+		font-family textFonts
+		font-size 18px
+		font-weight bold
+		color COLOR_LIGHT_ORANGE
+	svg
+		fill COLOR_LIGHT_ORANGE
+		
+#scroll-to-top-arrow:hover
+	background-color COLOR_WHITE_WITH_OPACITY
+	
+@media screen and ( max-width: SCROOL_ELEMENT_PARAMETER )
+	#scroll-to-top-arrow
+		display none!important
+
+// header:		
+#header
+	position relative
+	width 100%
+	min-width BASIC_WIDTH
+	height HEADER_HEIGHT
+	z-index 20
+	margin 0 auto
+	background-color COLOR_DARK_GRAY
+	box-shadow SHADOW_BLACK_BORDER, SHADOW_WINDOW_DARK
+	
+#header-content-wrap
+	width BASIC_WIDTH
+	margin auto
+
+	a
+		text-decoration none
+		
+	#header-logo
+		display block
+		width 262px
+		height HEADER_HEIGHT
+		float left
+		background url("./../images/logo.svg") no-repeat
+		background-size 290px
+		background-position 1px 1px
+
+	br
+		display none
+	hr
+		display none
+
+#nav-menu
+	ul
+		float right
+		
+		li
+			float left
+			text-transform uppercase
+			
+			a
+				display inline-block
+				padding 14px 15px
+				font-family menuFonts
+				font-size 20px
+				color white
+				text-shadow SHADOW_MENU_TEXT
+				text-decoration none
+				
+			a:hover
+				color COLOR_LIGHT_ORANGE
+				transform translateY( -2px )
+
+#open-mobile-menu-button
+	display none
+	float right
+
+	svg
+		position absolute
+		top 0
+		right 5px
+		height 48px
+
+@media screen and ( max-width: MOBILE_MAX_WIDTH )		
+	#header
+		min-width 100vw
+		width 100vw
+	#nav-menu
+		display none
+	#open-mobile-menu-button
+		display block
+				
+	#header.menu-opened
+		height 292px
+		
+		#text-logo
+			float none
+		br
+			display block
+		hr
+			display block
+			margin 4px 0px 0px 0px
+			line-height 8px
+		#nav-menu
+			display block
+			ul
+				float left
+				li
+					width 100%
+					float none
+						
+			#open-mobile-menu-button
+				display block
+
+// icons:
+.mini-icon
+	width MINIICON_SIZE
+	height MINIICON_SIZE
+	fill COLOR_LIGHT_ORANGE
+
+.icon
+	width ICON_SIZE
+	height ICON_SIZE
+	fill COLOR_WHITE
+.icon:hover
+	fill COLOR_LIGHT_ORANGE
+	
+.icon2x1
+	width WIDEICON_WIDTH
+	height ICON_SIZE
+	fill COLOR_WHITE
+.icon2x1:hover
+	fill COLOR_LIGHT_ORANGE
+				
+// content:
+#content
+	position relative
+	max-width BASIC_WIDTH
+	width BASIC_WIDTH
+	min-height CONTENT_MIN_HEIGHT
+	z-index 30
+	margin 0 auto
+	margin-top SPACE_HEIGHT
+	font-family textFonts
+	background-color COLOR_WHITE
+	box-shadow SHADOW_WHITE_BORDER, SHADOW_WINDOW_DARK
+
+@media screen and ( max-width: MOBILE_MAX_WIDTH )
+	#content
+		width 100vw
+
+// content panels:
+.panel
+	min-height ICON_SIZE + 2px
+	margin-bottom 1px
+	padding 1px 1px 1px 5px
+	background COLOR_LIGHT_ORANGE
+	font-family menuFonts
+	font-size 32px
+	color COLOR_WHITE		
+	text-shadow SHADOW_PANEL_TEXT
+	
+	span::selection
+		color COLOR_WHITE
+		background COLOR_INVISIBLE
+		
+#control-panel
+	.control-button
+		svg
+			display inline-block
+			float right
+			margin-right 1px
+			margin-top 1px
+			
+	.control-button:hover
+		cursor pointer
+	
+	.close-theater-mode-button
+		svg
+			display none
+			
+	.icon:hover
+		fill COLOR_BLACK
+
+// theater-mode style:
+#content.theater-mode
+	position absolute
+	top 0
+	left 0
+	width 100%
+	max-width 100%
+	margin 0
+	
+	#control-panel
+		.go-theater-mode-button
+			svg
+				display none
+		.close-theater-mode-button
+			svg
+				display block
+
+// content twitch-page:				
+#twitch
+	position absolute
+	top 37px
+	left 0
+	width calc( 100% - 420px )
+	
+#twitch-chat
+	position absolute
+	top 37px
+	left calc( 100% - 420px )
+	width 420px
+
+@media screen and ( max-width: MOBILE_MAX_WIDTH )
+	#twitch
+		width 100%
+		
+	#twitch-chat
+		left 0
+		width 100%
+	
+// content schedule:
+.schedule
+	width 100%
+	
+	td
+		padding 4px 2px
+
+	thead
+		tr
+			color white
+			background-color COLOR_LIGHT_ORANGE
+			border-bottom 1px solid COLOR_WHITE
+			
+			td#column1
+				width 11%
+			td#column2
+				width 24%
+			td#column4
+				width 24%
+			td#column5
+				width 9%
+			td#column6
+				width 10%
+
+	tbody
+		td
+			background white
+		tr.second-row
+			border-bottom 1px solid COLOR_LIGHT_ORANGE
+		tr.day-split
+			color white
+			td
+				background-color COLOR_LIGHT_ORANGE
+
+@media screen and ( max-width: MOBILE_MAX_WIDTH )
+	td
+		font-size	12px
+	td#column5, td.setup
+		display none	
+	
+// content text:
+#content
+	h1
+		font-size 24px
+		color #ff8000
+		text-shadow 1px 1px 2px COLOR_DARK_GRAY
+		
+	h2
+		margin 8px 4px
+		font-size 20px
+		color COLOR_LIGHT_ORANGE
+		text-shadow 0.5px 0.5px 1px COLOR_DARK_GRAY
+		
+	p
+		margin 4px 0px
+		font-size 16px
+		text-indent 36px
+	
+	a
+		color COLOR_LIGHT_ORANGE
+	a:visited
+		color COLOR_LIGHT_ORANGE
+			
+	img
+		display block
+		margin 0px auto
+	.image-position-left
+		margin-left 0px
+	.image-position-right
+		margin-right 0px
+	
+	details
+		margin 8px	
+		background-color COLOR_WHITE
+		color COLOR_GRAY
+		
+		summary
+			padding 4px
+			color COLOR_BLACK
+			cursor pointer
+		
+		summary:focus
+			outline 2px dotted COLOR_LIGHT_ORANGE
+		
+	.submenu
+		font-family menuFonts
+		font-size 24px
+		
+		.submenu-item
+			margin 2px 8px
+	
+	summary::selection, p::selection, p span::selection
+		background COLOR_LIGHT_ORANGE
+		color white
+
+@media screen and ( max-width: MOBILE_MAX_WIDTH )
+	#content
+		img
+			max-width 100vw
+
+// footer:
+#footer
+	position relative
+	width BASIC_WIDTH
+	height FOOTER_HEIGHT
+	z-index 20
+	margin auto
+	margin-top SPACE_HEIGHT
+	background-color COLOR_DARK_GRAY
+	box-shadow SHADOW_BLACK_BORDER, SHADOW_WINDOW_DARK
+	
+	
+	#wrap-fotter-up-icon
+		position absolute
+		top FOOTER_PADDING
+		left FOOTER_PADDING
+	
+	#footer-info
+		position absolute
+		top 16px
+		left calc( 50% - 53px )
+		color COLOR_WHITE
+		
+		span
+			font-family textFonts
+			font-size 16px
+			text-align center
+	
+	#wrap-social
+		position absolute
+		top 0
+		left calc( 100% - 228px )
+		.social-item
+			display inline-block
+			padding FOOTER_PADDING FOOTER_PADDING 0 0
+
+@media screen and ( max-width: 768px )
+	#footer
+		width 100vw
+		
+		#footer-info
+			left calc( 50vw - 145px )

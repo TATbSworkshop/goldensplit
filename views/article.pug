@@ -1,0 +1,61 @@
+extends layout
+
+block content
+	- for ( var contentItemID in content )
+		- var contentItem = content[ contentItemID ]
+		case contentItem.type
+			when "panel"
+				.panel( id = contentItem.id )
+					if contentItem.span
+						span= contentItem.span
+					if contentItem.controlPanel
+						ul.control-panel
+							- var controlPanelItems = contentItem.controlPanel
+							- for ( var controlPanelItemID in controlPanelItems )
+								- var controlPanelItem = controlPanelItems[ controlPanelItemID ]
+								li
+									a( href = "controlPanels.getByID( " + contentItem.id + " ).action( " + controlPanelItem.action " )" )
+										svg( src = controlPanelItem.icon )
+			when "header1"
+				h1( class = contentItem.class )= contentItem.text
+			when "header2"
+				h2( class = contentItem.class )= contentItem.text
+			when "image"
+				img( class = contentItem.class, src = contentItem.src )
+			when "paragraph"
+				p( class = contentItem.class )
+					- var paragraphItems = contentItem.items
+					- for ( var paragraphItemID in paragraphItems )
+						- var paragraphItem = paragraphItems[ paragraphItemID ]
+						case paragraphItem.type
+							when "span"
+								span= paragraphItem.text
+							when "text-link"
+								a( href = paragraphItem.href )= paragraphItem.text
+			when "spoiler"
+				details
+					summary= contentItem.header
+					- var spoilerItems = contentItem.items
+					- for ( var spoilerItemID in spoilerItems )
+						- var spoilerItem = spoilerItems[ spoilerItemID ]
+						case spoilerItem.type
+							when "image"
+								img( class = spoilerItem.class, src = spoilerItem.src )
+							when "paragraph"
+								p( class = spoilerItem.class )
+									- var paragraphItems = spoilerItem.items
+									- for ( var paragraphItemID in paragraphItems )
+										- var paragraphItem = paragraphItems[ paragraphItemID ]
+										case paragraphItem.type
+											when "span"
+												span= paragraphItem.text
+											when "text-link"
+												a( href = paragraphItem.href )= paragraphItem.text
+			when "break"
+				br
+			when "horizontal-line"
+				hr
+			when "div"
+				div( id = contentItem.id )
+	br
+						
